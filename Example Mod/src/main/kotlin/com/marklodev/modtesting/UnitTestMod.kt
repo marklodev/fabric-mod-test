@@ -6,14 +6,14 @@ import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 
 @Suppress("UNUSED")
-object ModName: ModInitializer {
-    private const val MOD_ID = "modtesting"
+object UnitTestMod: ModInitializer {
+    private const val MOD_ID = "unittestmod"
     override fun onInitialize() {
         println("Example mod has been initialized.")
         Registry.register(
             Registries.ITEM,
-            Identifier("tutorial", "custom_item"),
-            TestItem(FabricItemSettings())
+            Identifier("marklodev", "teleporter"),
+            Teleporter(FabricItemSettings())
         )
     }
 }

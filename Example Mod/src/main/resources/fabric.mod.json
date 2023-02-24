@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "modtesting",
+  "id": "unittestmod",
   "version": "${version}",
   "name": "Mod Name",
   "description": "Mod Description",
@@ -19,12 +19,12 @@
     "main": [
       {
         "adapter": "kotlin",
-        "value": "com.marklodev.modtesting.ModName"
+        "value": "com.marklodev.modtesting.UnitTestMod"
       }
     ]
   },
   "mixins": [
-    "modtesting.mixins.json"
+    "unittestmod.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${fabricloader}",
