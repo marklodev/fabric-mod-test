@@ -11,6 +11,7 @@ import net.minecraft.util.Hand
 import net.minecraft.util.TypedActionResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.math.Vec3i
 import net.minecraft.world.World
 
 class Teleporter(settings: Settings): Item(settings) {
@@ -32,18 +33,20 @@ class TeleporterBehavior {
     fun use(user: PlayerEntityAdapter?, world: WorldAdapter?): ActionResult {
         user?.let {
             val pos = user.getPos()
-            val newPos = findTeleportDestination(pos, world)
+            val direction = user.getHorizontalFacing()
+            val newPos = findTeleportDestination(pos, direction.vector, world)
             user.setPos(newPos)
         }
         return ActionResult.SUCCESS
     }
 
-    private fun findTeleportDestination(playerPos: Vec3d, world: WorldAdapter?): Vec3d {
+    private fun findTeleportDestination(playerPos: Vec3d, direction: Vec3i, world: WorldAdapter?): Vec3d {
         if (world == null) {
             return playerPos
         }
         for (i in teleportDistance downTo 0) {
-            val destination = playerPos.add(-i.toDouble(), 0.0, 0.0)
+            val offset = direction.multiply(i)
+            val destination = playerPos.add(offset.x.toDouble(), offset.y.toDouble(), offset.z.toDouble())
             if (world.getBlockState(BlockPos(destination)).isAir()) {
                 return destination
             }

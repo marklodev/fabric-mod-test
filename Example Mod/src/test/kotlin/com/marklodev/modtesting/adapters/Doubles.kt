@@ -1,6 +1,7 @@
 package com.marklodev.modtesting.adapters
 
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
 
 class PlayerDouble(var x: Double, var y: Double, var z: Double): PlayerEntityAdapter {
@@ -13,6 +14,8 @@ class PlayerDouble(var x: Double, var y: Double, var z: Double): PlayerEntityAda
         y = pos.y
         z - pos.z
     }
+
+    override fun getHorizontalFacing() = Direction.WEST
 
 }
 
