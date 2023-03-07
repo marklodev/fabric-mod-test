@@ -34,10 +34,10 @@ class TeleporterTest {
 
         Assertions.assertThat(world.blocks)
             .contains(
-                BlockStateDouble(0, -1, 0, false, Identifier("minecraft", "netherrack")),
-                BlockStateDouble(-1, -1, 0, false, Identifier("minecraft", "netherrack")),
-                BlockStateDouble(-2, -1, 0, false, Identifier("minecraft", "netherrack")),
-                BlockStateDouble(-3, -1, 0, false, Identifier("minecraft", "netherrack"))
+                BlockStateDouble(0, -1, 0, Identifier("minecraft", "netherrack")),
+                BlockStateDouble(-1, -1, 0, Identifier("minecraft", "netherrack")),
+                BlockStateDouble(-2, -1, 0, Identifier("minecraft", "netherrack")),
+                BlockStateDouble(-3, -1, 0, Identifier("minecraft", "netherrack"))
             )
     }
 
@@ -52,10 +52,10 @@ class TeleporterTest {
 
         Assertions.assertThat(world.blocks)
             .contains(
-                BlockStateDouble(0, 0, 0, false, Identifier("minecraft", "fire")),
-                BlockStateDouble(-1, 0, 0, false, Identifier("minecraft", "fire")),
-                BlockStateDouble(-2, 0, 0, false, Identifier("minecraft", "fire")),
-                BlockStateDouble(-3, 0, 0, false, Identifier("minecraft", "fire"))
+                BlockStateDouble(0, 0, 0, Identifier("minecraft", "fire")),
+                BlockStateDouble(-1, 0, 0, Identifier("minecraft", "fire")),
+                BlockStateDouble(-2, 0, 0, Identifier("minecraft", "fire")),
+                BlockStateDouble(-3, 0, 0, Identifier("minecraft", "fire"))
             )
     }
 }

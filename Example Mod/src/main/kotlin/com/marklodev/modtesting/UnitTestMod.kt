@@ -15,6 +15,12 @@ object UnitTestMod: ModInitializer {
             Identifier("marklodev", "teleporter"),
             Teleporter(FabricItemSettings())
         )
+
+        Registry.register(
+            Registries.ITEM,
+            Identifier("marklodev", "ore_attractor"),
+            OreAttractor(FabricItemSettings())
+        )
     }
 }
 
