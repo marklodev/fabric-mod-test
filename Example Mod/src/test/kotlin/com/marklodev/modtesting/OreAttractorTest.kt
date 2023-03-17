@@ -63,4 +63,21 @@ class OreAttractorTest {
         assertThat(world.blockEntities)
             .containsExactly(BlockEntityDouble(BlockPos(1, -2, 1), "Content"))
     }
+
+    @Test
+    fun `Stops movement below leg level`() {
+        val item = OreAttractorBehavior(BlockRegistryDouble())
+
+        val user = PlayerDouble(0.0, 0.0, 0.0)
+        val world = WorldDouble()
+        world.addBlock(0, -3, 0, Identifier("minecraft", "gold_ore"))
+
+        repeat(5) { item.use(user, world) }
+
+        assertThat(world.blocks)
+            .extracting({it.x}, {it.y}, {it.z}, {it.block})
+            .contains(
+                tuple(0, -1, 0, BlockDouble(Identifier("minecraft", "gold_ore")))
+            )
+    }
 }
