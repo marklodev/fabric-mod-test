@@ -42,7 +42,7 @@ class OreAttractorBehavior(blockRegistry: BlockRegistry) {
     private val bedrock = blockRegistry.getBlock(Identifier("minecraft", "bedrock"))
 
     fun use(player: PlayerEntityAdapter, world: WorldAdapter): ActionResult {
-        val initialPos = BlockPos(player.getPos()).down(2)
+        val initialPos = BlockPos.ofFloored(player.getPos()).down(2)
         searchDownward(world, initialPos)?.let { result ->
             val (pos, blockState) = result
             val targetPos = pos.up()

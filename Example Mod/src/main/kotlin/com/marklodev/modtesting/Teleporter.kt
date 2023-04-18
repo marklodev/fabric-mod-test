@@ -51,17 +51,17 @@ class TeleporterBehavior(private val blockRegistry: BlockRegistry) {
             val offset = direction.multiply(i)
             val destination = playerPos.add(offset.x.toDouble(), offset.y.toDouble(), offset.z.toDouble())
             if (!teleported) {
-                if (world.getBlockState(BlockPos(destination)).isAir()) {
+                if (world.getBlockState(BlockPos.ofFloored(destination)).isAir()) {
                     player.setPos(destination)
                     teleported = true
                 }
             } else {
                 world.setBlockState(
-                    BlockPos(destination.add(0.0, -1.0, 0.0)),
+                    BlockPos.ofFloored(destination.add(0.0, -1.0, 0.0)),
                     netherrack
                 )
                 world.setBlockState(
-                    BlockPos(destination),
+                    BlockPos.ofFloored(destination),
                     fire
                 )
             }
